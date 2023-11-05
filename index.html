@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Embedded Video</title>
+    <title>Mission Impossible</title>
     <style>
         body, html {
             margin: 0;
@@ -11,6 +11,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        #biometric-scan {
+            display: none;
         }
         #video-container {
             position: absolute;
@@ -24,10 +27,42 @@
             color: white;
             padding: 10px;
             font-size: 24px;
+            display: none;
+            animation: fade-in 3s ease-in-out forwards;
+        }
+        #agent-confirmed {
+            font-size: 36px;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: none;
+            animation: agent-confirmed 2s ease-in-out forwards;
+        }
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes agent-confirmed {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="biometric-scan">
+        <img src="https://images.app.goo.gl/scvLpARQtR5nvc9y6" alt="Biometric Scan Successful" width="300" height="300">
+    </div>
+    <div id="agent-confirmed">Agent Confirmed</div>
     <div id="message">Please use earphones for the best experience.</div>
     <div id="video-container">
         <iframe src="https://drive.google.com/file/d/1-V3R8UxuRm4CvqnASVc0NE-869sqYkoy/preview" width="100%" height="100%" allow="autoplay"></iframe>
@@ -42,12 +77,23 @@
             }
         }
 
-        // Show the message for a longer duration
+        // Show the biometric scan, "Agent Confirmed" message, and the "Please use earphones" message
+        const biometricScan = document.getElementById("biometric-scan");
+        const agentConfirmed = document.getElementById("agent-confirmed");
         const message = document.getElementById("message");
-        message.style.display = "block"; // Show the message
+
+        biometricScan.style.display = "block"; // Show the biometric scan
         setTimeout(() => {
-            message.style.display = "none"; // Hide the message after 6 seconds (doubled duration)
-        }, 6000);
+            biometricScan.style.display = "none"; // Hide the biometric scan after 3 seconds
+            agentConfirmed.style.display = "block"; // Show "Agent Confirmed" message
+            setTimeout(() => {
+                agentConfirmed.style.display = "none"; // Hide "Agent Confirmed" message after 2 seconds
+                message.style.display = "block"; // Show the "Please use earphones" message
+                setTimeout(() => {
+                    message.style.display = "none"; // Hide the message after 6 seconds
+                }, 6000);
+            }, 2000);
+        }, 3000);
     </script>
 </body>
 </html>
