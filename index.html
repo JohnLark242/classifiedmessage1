@@ -25,14 +25,14 @@
             padding: 10px;
             font-size: 24px;
             display: none;
-            animation: fade-in 3s ease-in-out forwards, fade-out 3s ease-in-out 8s forwards;
+            animation: fade-in 3s ease-in-out forwards;
         }
         #agent-confirmed {
             font-size: 36px;
             text-transform: uppercase;
             font-weight: bold;
             display: none;
-            animation: fade-in 3s ease-in-out 1s forwards, fade-out 3s ease-in-out 6s forwards;
+            animation: fade-in 3s ease-in-out forwards, fade-out 3s ease-in-out 4s forwards;
         }
         @keyframes fade-in {
             0% {
@@ -54,9 +54,8 @@
 </head>
 <body>
     <div id="agent-confirmed">Agent Confirmed</div>
-    <div id="message">Please use earphones for the best experience.</div>
     <div id="video-container">
-        <iframe src="https://drive.google.com/file/d/1-V3R8UxuRm4CvqnASVc0NE-869sqYkoy/preview" width="100%" height="100%" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1-V3R8UxuRm4CvqnASVc0NE-869sqYkoy/preview" width="100%" height="100%" allow="autoplay" style="display: none;"></iframe>
     </div>
     <script>
         // Automatically enter full screen on page load
@@ -68,24 +67,14 @@
             }
         }
 
-        // Show "Agent Confirmed" message slowly, stay for 5 seconds, then hide slowly
+        // Show "Agent Confirmed" message slowly, stay for 2 seconds, and then hide slowly
         const agentConfirmed = document.getElementById("agent-confirmed");
         agentConfirmed.style.display = "block";
         setTimeout(() => {
             agentConfirmed.style.display = "none";
-        }, 8000); // 8 seconds total display time
-
-        // Delay showing the "Please use earphones" message
-        setTimeout(() => {
-            const message = document.getElementById("message");
-            // Show "Please use earphones" message slowly, stay for 4 seconds, then hide slowly
-            message.style.display = "block";
-            setTimeout(() => {
-                message.style.display = "none";
-                // Video starts playing automatically
-                iframe.src = iframe.src; // Refresh the iframe to start the video
-            }, 6000); // 6 seconds total display time
-        }, 8000); // Delay showing the message until "Agent Confirmed" is hidden
+            // Show the video slowly
+            iframe.style.display = "block";
+        }, 2000); // 2 seconds total display time
     </script>
 </body>
 </html>
