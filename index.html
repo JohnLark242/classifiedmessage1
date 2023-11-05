@@ -25,14 +25,14 @@
             padding: 10px;
             font-size: 24px;
             display: none;
-            animation: fade-in 3s ease-in-out forwards;
+            animation: fade-in 3s ease-in-out forwards, fade-out 3s ease-in-out 8s forwards;
         }
         #agent-confirmed {
             font-size: 36px;
             text-transform: uppercase;
             font-weight: bold;
             display: none;
-            animation: fade-in 3s ease-in-out forwards, fade-out 3s ease-in-out 4s forwards;
+            animation: fade-in 3s ease-in-out 1s forwards, fade-out 3s ease-in-out 6s forwards;
         }
         @keyframes fade-in {
             0% {
@@ -68,17 +68,24 @@
             }
         }
 
-        // Show the "Agent Confirmed" message and the "Please use earphones" message
+        // Show "Agent Confirmed" message slowly, stay for 5 seconds, then hide slowly
         const agentConfirmed = document.getElementById("agent-confirmed");
-        const message = document.getElementById("message");
-
-        agentConfirmed.style.display = "block"; // Show "Agent Confirmed" message
+        agentConfirmed.style.display = "block";
         setTimeout(() => {
-            message.style.display = "block"; // Show the "Please use earphones" message
+            agentConfirmed.style.display = "none";
+        }, 8000); // 8 seconds total display time
+
+        // Delay showing the "Please use earphones" message
+        setTimeout(() => {
+            const message = document.getElementById("message");
+            // Show "Please use earphones" message slowly, stay for 4 seconds, then hide slowly
+            message.style.display = "block";
             setTimeout(() => {
-                message.style.display = "none"; // Hide the message after 6 seconds
-            }, 6000);
-        }, 7000); // Delay the "Agent Confirmed" fade-out for 7 seconds
+                message.style.display = "none";
+                // Video starts playing automatically
+                iframe.src = iframe.src; // Refresh the iframe to start the video
+            }, 6000); // 6 seconds total display time
+        }, 8000); // Delay showing the message until "Agent Confirmed" is hidden
     </script>
 </body>
 </html>
