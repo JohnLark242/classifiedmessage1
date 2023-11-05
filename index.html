@@ -1,31 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Full Screen Video</title>
+    <title>Google Drive Video Player</title>
 </head>
 <body>
-    <video controls id="fullscreen-video">
-        <source src="https://github.com/JohnLark242/classifiedmessage1/blob/main/242final.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <button id="fullscreen-button">Full Screen</button>
-
-    <script>
-        const video = document.getElementById('fullscreen-video');
-        const fullscreenButton = document.getElementById('fullscreen-button');
-
-        fullscreenButton.addEventListener('click', () => {
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.mozRequestFullScreen) { /* Firefox */
-                video.mozRequestFullScreen();
-            } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-                video.webkitRequestFullscreen();
-            } else if (video.msRequestFullscreen) { /* IE/Edge */
-                video.msRequestFullscreen();
-            }
-        });
-    </script>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe src="https://drive.google.com/file/d/1-V3R8UxuRm4CvqnASVc0NE-869sqYkoy/view?usp=sharing" frameborder="0" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
 </body>
 </html>
