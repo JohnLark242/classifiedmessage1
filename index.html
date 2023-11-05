@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Organization</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #000;
+            color: #fff;
+        }
+
+        .fullscreen-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #video-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .agent-confirmed {
+            font-size: 30px;
+            animation: fadeIn 2s linear forwards, fadeOut 2s linear 4s forwards;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <video class="fullscreen-video" controls autoplay>
+            <source src="https://github.com/JohnLark242/classifiedmessage1/raw/main/242final.mkv" type="video/mkv">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="agent-confirmed">Agent Confirmed</div>
+    <script>
+        const video = document.querySelector('.fullscreen-video');
+        video.addEventListener('click', () => {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) {
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
