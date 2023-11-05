@@ -2,15 +2,44 @@
 <html>
 <head>
     <title>Embedded Video</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        #video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #message {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1>Your Page Content Goes Here</h1>
-        <p>This is the content of your HTML page.</p>
-    </div>
-
+    <div id="message">Please use earphones for the best experience.</div>
     <div id="video-container">
-        <iframe src="https://drive.google.com/file/d/1-V3R8UxuRm4CvqnASVc0NE-869sqYkoy/preview" width="640" height="480" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1-V3R8UxuRm4CvqnASVc0NE-869sqYkoy/preview" width="100%" height="100%" allow="autoplay"></iframe>
     </div>
+    <script>
+        // Automatically enter full screen on page load
+        const iframe = document.querySelector("iframe");
+        if (iframe) {
+            iframe.requestFullscreen = iframe.requestFullscreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullscreen || iframe.msRequestFullscreen;
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            }
+        }
+    </script>
 </body>
 </html>
