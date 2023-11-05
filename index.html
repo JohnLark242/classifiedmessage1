@@ -12,9 +12,6 @@
             justify-content: center;
             align-items: center;
         }
-        #biometric-scan {
-            display: none;
-        }
         #video-container {
             position: absolute;
             top: 0;
@@ -59,9 +56,6 @@
     </style>
 </head>
 <body>
-    <div id="biometric-scan">
-        <img src="https://images.app.goo.gl/scvLpARQtR5nvc9y6" alt="Biometric Scan Successful" width="300" height="300">
-    </div>
     <div id="agent-confirmed">Agent Confirmed</div>
     <div id="message">Please use earphones for the best experience.</div>
     <div id="video-container">
@@ -77,23 +71,18 @@
             }
         }
 
-        // Show the biometric scan, "Agent Confirmed" message, and the "Please use earphones" message
-        const biometricScan = document.getElementById("biometric-scan");
+        // Show the "Agent Confirmed" message and the "Please use earphones" message
         const agentConfirmed = document.getElementById("agent-confirmed");
         const message = document.getElementById("message");
 
-        biometricScan.style.display = "block"; // Show the biometric scan
+        agentConfirmed.style.display = "block"; // Show "Agent Confirmed" message
         setTimeout(() => {
-            biometricScan.style.display = "none"; // Hide the biometric scan after 3 seconds
-            agentConfirmed.style.display = "block"; // Show "Agent Confirmed" message
+            agentConfirmed.style.display = "none"; // Hide "Agent Confirmed" message after 2 seconds
+            message.style.display = "block"; // Show the "Please use earphones" message
             setTimeout(() => {
-                agentConfirmed.style.display = "none"; // Hide "Agent Confirmed" message after 2 seconds
-                message.style.display = "block"; // Show the "Please use earphones" message
-                setTimeout(() => {
-                    message.style.display = "none"; // Hide the message after 6 seconds
-                }, 6000);
-            }, 2000);
-        }, 3000);
+                message.style.display = "none"; // Hide the message after 6 seconds
+            }, 6000);
+        }, 2000);
     </script>
 </body>
 </html>
