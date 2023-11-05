@@ -32,7 +32,7 @@
             text-transform: uppercase;
             font-weight: bold;
             display: none;
-            animation: agent-confirmed 2s ease-in-out forwards;
+            animation: fade-in 3s ease-in-out forwards, fade-out 3s ease-in-out 4s forwards;
         }
         @keyframes fade-in {
             0% {
@@ -42,11 +42,8 @@
                 opacity: 1;
             }
         }
-        @keyframes agent-confirmed {
+        @keyframes fade-out {
             0% {
-                opacity: 0;
-            }
-            50% {
                 opacity: 1;
             }
             100% {
@@ -77,12 +74,11 @@
 
         agentConfirmed.style.display = "block"; // Show "Agent Confirmed" message
         setTimeout(() => {
-            agentConfirmed.style.display = "none"; // Hide "Agent Confirmed" message after 2 seconds
             message.style.display = "block"; // Show the "Please use earphones" message
             setTimeout(() => {
                 message.style.display = "none"; // Hide the message after 6 seconds
             }, 6000);
-        }, 2000);
+        }, 7000); // Delay the "Agent Confirmed" fade-out for 7 seconds
     </script>
 </body>
 </html>
